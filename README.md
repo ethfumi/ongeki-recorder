@@ -5,11 +5,13 @@
 
 https://github.com/Oshiumi/chunithm-recoder を参考にしてます。
 
-# 環境準備(Macの場合.Windowsは分からないです)
+# 環境準備
+
+Macの場合。Windowsだと違うかもしれないです。
 
 ## Rubyインストール
 
-Rubyは新しければ良さそう。今回の場合は2.5.1
+Rubyは新しければ良さそう。今回の場合は2.5.1。
 ```
 git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
