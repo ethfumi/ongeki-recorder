@@ -19,7 +19,6 @@ driver.find_element(:xpath, '//button[contains(@class, "btn_login_block")]').cli
 driver.find_element(:xpath, '//button[contains(@class, "f_0")]').click
 
 # レコードのプレイ履歴
-driver.navigate.to 'https://ongeki-net.com/ongeki-mobile/record/'
 driver.navigate.to 'https://ongeki-net.com/ongeki-mobile/record/playlog/'
 
 # driver.save_screenshot 'tmp.png'
