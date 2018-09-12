@@ -5,17 +5,6 @@
 
 https://github.com/Oshiumi/chunithm-recoder を参考にしてます。
 
-# 実行方法
-
-`.env-template`を複製し、`.env`をpngeki-recorder直下に生成。
-
-`ONGEKI_SEGA_ID`の`your_id`と`ONGEKI_PASSWORD`の`your_password`を書き換える
-
-下記コマンドををpngeki-recorder直下で実行。tmp.csvが作られます。
-```
-bundle exec ruby app.rb
-```
-
 # 環境準備(Macの場合.Windowsは分からないです)
 
 ## Rubyインストール
@@ -53,3 +42,18 @@ git clone https://github.com/ethfumi/ongeki-recorder.git ./ongeki-recorder
 cd ongeki-recorder
 bundle install --path=vendor/bundle
 ```
+
+# 実行方法
+
+`.env-template`を複製し、`.env`をpngeki-recorder直下に生成。
+
+`ONGEKI_SEGA_ID`の`your_id`と`ONGEKI_PASSWORD`の`your_password`を書き換える
+
+下記コマンドををpngeki-recorder直下で実行。tmp.csvが作られます。
+```
+bundle exec ruby app.rb
+```
+
+# 実行結果
+
+<img width="493" alt="aaa" src="https://user-images.githubusercontent.com/2544432/45429672-b9bd8380-b6de-11e8-80c1-2b69fb28be06.png">
