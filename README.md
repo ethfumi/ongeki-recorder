@@ -51,7 +51,7 @@ bundle install --path=vendor/bundle
 
 `ONGEKI_SEGA_ID`の`your_id`と`ONGEKI_PASSWORD`の`your_password`を書き換える
 
-下記コマンドををpngeki-recorder直下で実行。tmp.csvが作られます。
+下記コマンドををongeki-recorder直下で実行。tmp.csvが作られます。
 ```
 bundle exec ruby app.rb
 ```
