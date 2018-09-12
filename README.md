@@ -47,7 +47,7 @@ bundle install --path=vendor/bundle
 
 # 実行方法
 
-`.env-template`を複製し、`.env`をpngeki-recorder直下に生成。
+`.env-template`を複製し、`.env`をongeki-recorder直下に生成。
 
 `ONGEKI_SEGA_ID`の`your_id`と`ONGEKI_PASSWORD`の`your_password`を書き換える
 
