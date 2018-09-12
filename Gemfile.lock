@@ -1,0 +1,31 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    archive-zip (0.11.0)
+      io-like (~> 0.3.0)
+    childprocess (0.9.0)
+      ffi (~> 1.0, >= 1.0.11)
+    chromedriver-helper (1.2.0)
+      archive-zip (~> 0.10)
+      nokogiri (~> 1.8)
+    dotenv (2.5.0)
+    ffi (1.9.25)
+    io-like (0.3.0)
+    mini_portile2 (2.3.0)
+    nokogiri (1.8.4)
+      mini_portile2 (~> 2.3.0)
+    rubyzip (1.2.2)
+    selenium-webdriver (3.14.0)
+      childprocess (~> 0.5)
+      rubyzip (~> 1.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  chromedriver-helper
+  dotenv
+  selenium-webdriver
+
+BUNDLED WITH
+   1.16.4
