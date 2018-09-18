@@ -72,6 +72,9 @@ record = []
      	"full_combo"
      end
 
+  place_name = driver.find_element(:xpath, '//span[contains(@class, "d_b p_10")]').text
+  matching1, matching2, matching3 = driver.find_elements(:xpath, '//div[contains(@class, "border_block")]').map(&:text)
+
   # record << {
   #    'title' => title,
   #    'date' => date,
@@ -96,9 +99,13 @@ record = []
   #    'flick' => score_detial_flick,
   #    'side_tap' => score_detial_side_tap,
   #    'side_hold' => score_detial_side_hold,
+  #    'place_name' => place_name,
+  #    'matching1' => matching1,
+  #    'matching2' => matching2,
+  #    'matching3' => matching3,
   # }
 
-  record << "#{title},#{date},#{difficulty},#{battle_rank},#{battle_score},#{over_damage},#{technical_rank},#{technical_score},#{result},#{full_bell},#{full_combo},#{max_combo},#{score_critical_break},#{score_break},#{score_hit},#{score_miss},#{score_bell},#{score_damage},#{score_detial_tap},#{score_detial_hold},#{score_detial_flick},#{score_detial_side_tap},#{score_detial_side_hold}"
+  record << "#{title},#{date},#{difficulty},#{battle_rank},#{battle_score},#{over_damage},#{technical_rank},#{technical_score},#{result},#{full_bell},#{full_combo},#{max_combo},#{score_critical_break},#{score_break},#{score_hit},#{score_miss},#{score_bell},#{score_damage},#{score_detial_tap},#{score_detial_hold},#{score_detial_flick},#{score_detial_side_tap},#{score_detial_side_hold},#{place_name},#{matching1},#{matching2},#{matching3}"
 end
 
 # 旧形式
