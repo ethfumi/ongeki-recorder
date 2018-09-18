@@ -62,7 +62,7 @@ record = []
   max_combo, score_critical_break, score_break, score_hit, score_miss, score_bell, max_bell, score_detial_tap, score_detial_hold, score_detial_flick, score_detial_side_tap, score_detial_side_hold = driver.find_elements(:xpath, '//td[contains(@class, "f_b")]').map(&:text).flat_map{ |s| s.split('/').map{|s2| s2.gsub(/,/, '_').to_i} }
   score_damage = driver.find_element(:xpath, '//tr[contains(@class, "score_damage")]').text.scan(/[0-9]+/).first.to_i
 
-  full_bell = result == "win" && score_bell == max_bell ? "full_bell" : ""
+  full_bell = result != "lose" && score_bell == max_bell ? "full_bell" : ""
   note_num = score_critical_break + score_break + score_hit + score_miss
   full_combo = if result == "lose" || note_num != max_combo then
   	    ""
