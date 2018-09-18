@@ -67,7 +67,7 @@ record = []
   full_combo = if result == "lose" || note_num != max_combo then
   	    ""
   	 elsif note_num == (score_critical_break + score_break) then
-     	"all_justice"
+     	"all_break"
      else
      	"full_combo"
      end
