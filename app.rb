@@ -62,15 +62,27 @@ record = []
   max_combo, score_critical_break, score_break, score_hit, score_miss, score_bell, max_bell, score_detial_tap, score_detial_hold, score_detial_flick, score_detial_side_tap, score_detial_side_hold = driver.find_elements(:xpath, '//td[contains(@class, "f_b")]').map(&:text).flat_map{ |s| s.split('/').map{|s2| s2.gsub(/,/, '_').to_i} }
   score_damage = driver.find_element(:xpath, '//tr[contains(@class, "score_damage")]').text.scan(/[0-9]+/).first.to_i
 
-  full_bell = result == "win" && score_bell == max_bell ? "full_bell" : ""
+  full_bell = result != "lose" && score_bell == max_bell ? "full_bell" : ""
   note_num = score_critical_break + score_break + score_hit + score_miss
   full_combo = if result == "lose" || note_num != max_combo then
   	    ""
   	 elsif note_num == (score_critical_break + score_break) then
-     	"all_justice"
+     	"all_break"
      else
      	"full_combo"
      end
+
+  place_name = driver.find_element(:xpath, '//span[contains(@class, "d_b p_10")]').text
+  matching1, matching2, matching3 = driver.find_elements(:xpath, '//div[contains(@class, "border_block")]').map(&:text)
+
+  card_level1, card_level2, card_level3 = driver.find_elements(:xpath, '//span[contains(@class, "main_color")]').map{|s| s.text.scan(/[0-9]+/).first.to_i}
+  card_power1, card_power2, card_power3 = driver.find_elements(:xpath, '//span[contains(@class, "sub_color")]').map{|s| s.text.to_i}
+  card_image_name1, card_image_name2, card_image_name3 = driver
+                 .find_elements(:xpath, '//div[contains(@class, "card_block f_l col3")]')
+                 .map {|e|
+                  e.find_element(:tag_name, 'img')
+                   .property('src')[/.*card\/(.+)\.png/,1]
+                 }
 
   # record << {
   #    'title' => title,
@@ -96,9 +108,22 @@ record = []
   #    'flick' => score_detial_flick,
   #    'side_tap' => score_detial_side_tap,
   #    'side_hold' => score_detial_side_hold,
+  #    'place_name' => place_name,
+  #    'matching1' => matching1,
+  #    'matching2' => matching2,
+  #    'matching3' => matching3,
+  #    'card_level1' => card_level1,
+  #    'card_power1' => card_power1,
+  #    'card_image_name1' => card_image_name1,
+  #    'card_level2' => card_level2,
+  #    'card_power2' => card_power2,
+  #    'card_image_name2' => card_image_name2,
+  #    'card_level3' => card_level3,
+  #    'card_power3' => card_power3,
+  #    'card_image_name3' => card_image_name3,
   # }
 
-  record << "#{title},#{date},#{difficulty},#{battle_rank},#{battle_score},#{over_damage},#{technical_rank},#{technical_score},#{result},#{full_bell},#{full_combo},#{max_combo},#{score_critical_break},#{score_break},#{score_hit},#{score_miss},#{score_bell},#{score_damage},#{score_detial_tap},#{score_detial_hold},#{score_detial_flick},#{score_detial_side_tap},#{score_detial_side_hold}"
+  record << "#{title},#{date},#{difficulty},#{battle_rank},#{battle_score},#{over_damage},#{technical_rank},#{technical_score},#{result},#{full_bell},#{full_combo},#{max_combo},#{score_critical_break},#{score_break},#{score_hit},#{score_miss},#{score_bell},#{score_damage},#{score_detial_tap},#{score_detial_hold},#{score_detial_flick},#{score_detial_side_tap},#{score_detial_side_hold},#{place_name},#{matching1},#{matching2},#{matching3},#{card_level1},#{card_power1},#{card_image_name1},#{card_level2},#{card_power2},#{card_image_name2},#{card_level3},#{card_power3},#{card_image_name3}"
 end
 
 # 旧形式
