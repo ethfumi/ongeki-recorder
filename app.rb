@@ -20,7 +20,6 @@ driver.find_element(:xpath, '//button[contains(@class, "f_0")]').click
 
 # レコードのプレイ履歴
 
-wait = Selenium::WebDriver::Wait.new(:timeout => 103)
 record = []
 50.times do |i|
 #1.times do |i|
