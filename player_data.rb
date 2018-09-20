@@ -44,5 +44,7 @@ class PlayerData
     File.open(filename, 'a') do |f|
         f.puts @record
     end
+
+    p "#{filename}に追加保存しました。"
   end
 end

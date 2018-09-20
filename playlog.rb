@@ -1,5 +1,6 @@
 class Playlog
-  def collect(driver)
+  # todo:必要があり次第allに対応する
+  def collect(driver, all)
     driver.navigate.to 'https://ongeki-net.com/ongeki-mobile/record/playlog/'
 
     dates = driver.find_elements(:xpath, '//span[contains(@class, "f_r f_12 h_10")]').map(&:text)
@@ -14,7 +15,8 @@ class Playlog
     p @record
   end
 
-  def collect_detail(driver, num = 50)
+  def collect_detail(driver, all)
+    num = all ? 50 : 1
     @record = []
     num.times do |i|
       playlog_detail_url="https://ongeki-net.com/ongeki-mobile/record/playlogDetail/?idx=#{i}"
@@ -131,5 +133,7 @@ class Playlog
         f.puts r
       end
     end
+
+    p "#{filename}に保存しました。"
   end
 end
