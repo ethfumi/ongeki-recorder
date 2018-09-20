@@ -160,7 +160,7 @@ now = Time.now
 trophy = driver.find_element(:xpath, '//div[contains(@class, "trophy_block trophy_3 f_11 f_b")]').text
 reincarnation = driver.find_element(:xpath, '//div[contains(@class, "reincarnation_block")]').text.to_i
 lv = driver.find_element(:xpath, '//div[contains(@class, "lv_block white")]').text.to_i
-battle_point = driver.find_element(:xpath, '//div[contains(@class, "battle_point_17")]').text.gsub(/,/, '_').to_i
+battle_point = driver.find_element(:xpath, '//div[contains(@class, "battle_point_")]').text.gsub(/,/, '_').to_i
 name = driver.find_element(:xpath, '//div[contains(@class, "name_block f_15")]').text
 
 rating = driver.find_element(:xpath, '//span[contains(@class, "rating_shadow f_20 f_b")]').text.to_f
