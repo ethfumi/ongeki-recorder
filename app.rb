@@ -1,7 +1,10 @@
 require 'selenium-webdriver'
 require 'dotenv'
+require './app_option'
 require './playlog'
 require './player_data'
+
+option = AppOption.new
 
 Dotenv.load
 
@@ -21,11 +24,10 @@ driver.find_element(:xpath, '//button[contains(@class, "f_0")]').click
 
 # レコードのプレイ履歴収集
 playlog = Playlog.new
-playlog.collect_detail(driver)
-playlog.save
+playlog.collect_detail(driver, !option.has?(:short))
+playlog.save unless option.has?(:dryrun)
 
 # プレイヤーデータ収集
 player_data = PlayerData.new
 player_data.collect(driver)
-player_data.save
-
+player_data.save unless option.has?(:dryrun)
