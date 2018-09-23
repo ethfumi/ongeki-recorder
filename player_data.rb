@@ -33,7 +33,24 @@ class PlayerData
 
     friendly_yuzu = friendly_image_numbers[4][0].to_i * 100 + friendly_image_numbers[1][0].to_i + friendly_image_numbers[2][0].to_i
 
-    @record="#{now},#{name},#{trophy},#{total_track},,#{total_money},#{reincarnation*100+lv},#{battle_point},#{rating},#{max_rating},,,,,,,#{friendly_yuzu},#{jewel_wild},#{jewels[-1]}"
+    # トータルハイスコア
+    driver.navigate.to 'https://ongeki-net.com/ongeki-mobile/ranking/totalHiscore/'
+
+    # all basic advanced expert master lunatic の順
+    total_battle_scores = []
+    6.times do |i|
+      driver.find_elements(:xpath, '//button[contains(@class, "f_0")]')[i].click
+      total_battle_scores << driver.find_element(:xpath, '//td[contains(@class, "gray_line f_b")]').text.gsub(/,/, '_').to_i
+    end
+
+    Selenium::WebDriver::Support::Select.new(driver.find_element(:name => "scoreType")).select_by(:text, 'テクニカルスコア')
+    total_technical_scores = []
+    6.times do |i|
+      driver.find_elements(:xpath, '//button[contains(@class, "f_0")]')[i].click
+      total_technical_scores << driver.find_element(:xpath, '//td[contains(@class, "gray_line f_b")]').text.gsub(/,/, '_').to_i
+    end
+
+    @record="#{now},#{name},#{trophy},#{total_track},,#{total_money},#{reincarnation*100+lv},#{battle_point},#{rating},#{max_rating},,,,,,,#{friendly_yuzu},#{jewel_wild},#{jewels[-1]},#{total_battle_scores.join(",")},#{total_technical_scores.join(",")}"
 
     p @record
   end
