@@ -6,7 +6,7 @@ class PlayerData
 
     now = Time.now
 
-    trophy = driver.find_element(:xpath, '//div[contains(@class, "trophy_block trophy_3 f_11 f_b")]').text
+    trophy = driver.find_element(:xpath, '//div[contains(@class, "trophy_block")]').text
     reincarnation = driver.find_element(:xpath, '//div[contains(@class, "reincarnation_block")]').text.to_i
     lv = driver.find_element(:xpath, '//div[contains(@class, "lv_block white")]').text.to_i
     battle_point = driver.find_element(:xpath, '//div[contains(@class, "battle_point_")]').text.gsub(/,/, '_').to_i
