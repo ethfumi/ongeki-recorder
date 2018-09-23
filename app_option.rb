@@ -32,3 +32,10 @@ class AppOption
     ARGV
   end
 end
+
+return unless $0 == __FILE__
+
+option = AppOption.new
+p "dryrun:#{option.has?(:dryrun)}"
+p "short:#{option.has?(:short)}"
+p "get_extras:#{option.get_extras}"
