@@ -22,3 +22,8 @@ class OngekiWebDriver
     return driver
   end
 end
+
+return unless $0 == __FILE__
+
+driver = OngekiWebDriver.new.login
+driver.save_screenshot 'tmp.png'

@@ -48,3 +48,15 @@ class PlayerData
     p "#{filename}に追加保存しました。"
   end
 end
+
+return unless $0 == __FILE__
+
+require './ongeki_web_driver'
+require './app_option'
+
+option = AppOption.new
+driver = OngekiWebDriver.new.login
+
+player_data = PlayerData.new
+player_data.collect(driver)
+player_data.save unless option.has?(:dryrun)

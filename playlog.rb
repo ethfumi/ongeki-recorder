@@ -137,3 +137,15 @@ class Playlog
     p "#{filename}に保存しました。"
   end
 end
+
+return unless $0 == __FILE__
+
+require './ongeki_web_driver'
+require './app_option'
+
+option = AppOption.new
+driver = OngekiWebDriver.new.login
+
+playlog = Playlog.new
+playlog.collect_detail(driver, !option.has?(:short))
+playlog.save unless option.has?(:dryrun)
