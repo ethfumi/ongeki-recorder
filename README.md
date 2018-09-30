@@ -1,6 +1,6 @@
 # ongeki-recorder
 
-オンゲキのプレイ履歴を収集するやつ。
+オンゲキのプレイ履歴とプレイヤーデータを収集するやつ。
 要スタンダードコース以上です。
 
 https://github.com/Oshiumi/chunithm-recoder を参考にしてます。
@@ -51,11 +51,15 @@ bundle install --path=vendor/bundle
 
 `ONGEKI_SEGA_ID`の`your_id`と`ONGEKI_PASSWORD`の`your_password`を書き換える
 
-下記コマンドををongeki-recorder直下で実行。tmp.csvが作られます。
+下記コマンドををongeki-recorder直下で実行。playlog_YYYYmmdd-HHMMSS.csvとplayer_data.csvに保存されます。
 ```
 bundle exec ruby app.rb
 ```
 
 # 実行結果
 
-<img width="493" alt="aaa" src="https://user-images.githubusercontent.com/2544432/45429672-b9bd8380-b6de-11e8-80c1-2b69fb28be06.png">
+playlog_YYYYmmdd-HHMMSS.csv
+<img width="746" alt="playlog" src="https://user-images.githubusercontent.com/2544432/46259172-d2b49a00-c510-11e8-8886-61e66e442c28.png">
+
+player_data.csv
+<img width="748" alt="player_data" src="https://user-images.githubusercontent.com/2544432/46259202-22936100-c511-11e8-9474-2747bde33ba8.png">
