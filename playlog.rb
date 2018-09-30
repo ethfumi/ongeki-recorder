@@ -125,7 +125,7 @@ class Playlog
   end
 
   def save
-    filename = 'tmp.csv'
+    filename = "playlog_#{Time.now.strftime('%Y%m%d_%H%M%S')}.csv"
 
     File.open(filename, 'w') do |f|
       @record.each do |r|
