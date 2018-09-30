@@ -20,18 +20,19 @@ class PlayerData
 
     # ジュエル
     driver.navigate.to 'https://ongeki-net.com/ongeki-mobile/record/'
-
-    jewel_wild = driver.find_element(:xpath, '//span[contains(@class, "v_m p_3 f_14 gray")]').text.gsub(/,/, '_').to_i
     jewels = driver.find_elements(:xpath, '//span[contains(@class, "v_m p_3 f_14 white")]').map(&:text).map{ |s| s.gsub(/,/, '_').to_i}
+    jewel_wild = driver.find_element(:xpath, '//span[contains(@class, "v_m p_3 f_14 gray")]').text.gsub(/,/, '_').to_i
+    jewels << jewel_wild
 
-    # todo:親密度とりあえず柚子だけ
-    driver.navigate.to 'https://ongeki-net.com/ongeki-mobile/character/characterDetail/?idx=1001'
+    # # todo:親密度とりあえず柚子だけ
+    # # 必要なくなったので閉じる
+    # driver.navigate.to 'https://ongeki-net.com/ongeki-mobile/character/characterDetail/?idx=1001'
 
-    friendly_image_numbers = driver.find_element(:xpath, '//div[contains(@class, "character_friendly_conainer f_l")]')
-                     .find_elements(:tag_name, 'img')
-                     .map{|e| e.property('src').scan(/[0-9]+/)}
+    # friendly_image_numbers = driver.find_element(:xpath, '//div[contains(@class, "character_friendly_conainer f_l")]')
+    #                  .find_elements(:tag_name, 'img')
+    #                  .map{|e| e.property('src').scan(/[0-9]+/)}
 
-    friendly_yuzu = friendly_image_numbers[4][0].to_i * 100 + friendly_image_numbers[1][0].to_i + friendly_image_numbers[2][0].to_i
+    # friendly_yuzu = friendly_image_numbers[4][0].to_i * 100 + friendly_image_numbers[1][0].to_i + friendly_image_numbers[2][0].to_i
 
     # トータルハイスコア
     driver.navigate.to 'https://ongeki-net.com/ongeki-mobile/ranking/totalHiscore/'
@@ -50,7 +51,7 @@ class PlayerData
       total_technical_scores << driver.find_element(:xpath, '//td[contains(@class, "gray_line f_b")]').text.gsub(/,/, '_').to_i
     end
 
-    @record="#{now},#{name},#{trophy},#{total_track},,#{total_money},#{reincarnation*100+lv},#{battle_point},#{rating},#{max_rating},,,,,,,#{friendly_yuzu},#{jewel_wild},#{jewels[-1]},#{total_battle_scores.join(",")},#{total_technical_scores.join(",")}"
+    @record="#{now},#{name},#{trophy},#{total_track},#{money},#{total_money},#{reincarnation*100+lv},#{battle_point},#{rating},#{max_rating},#{total_battle_scores.join(",")},#{total_technical_scores.join(",")},#{jewels.join(",")}"
 
     p @record
   end
