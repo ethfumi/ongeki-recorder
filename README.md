@@ -59,7 +59,9 @@ bundle exec ruby app.rb
 # 実行結果
 
 playlog_YYYYmmdd-HHMMSS.csv
-<img width="746" alt="playlog" src="https://user-images.githubusercontent.com/2544432/46259172-d2b49a00-c510-11e8-8886-61e66e442c28.png">
+
+<img width="493" alt="playlog" src="https://user-images.githubusercontent.com/2544432/46259172-d2b49a00-c510-11e8-8886-61e66e442c28.png">
 
 player_data.csv
-<img width="748" alt="player_data" src="https://user-images.githubusercontent.com/2544432/46259202-22936100-c511-11e8-9474-2747bde33ba8.png">
+
+<img width="493" alt="player_data" src="https://user-images.githubusercontent.com/2544432/46259202-22936100-c511-11e8-9474-2747bde33ba8.png">
