@@ -80,8 +80,8 @@ class Playlog
                      }
 
       # record << {
-      #    'title' => title,
       #    'date' => date,
+      #    'title' => title,
       #    'difficulty' => difficulty,
       #    'battle_rank' => battle_rank,
       #    'battle_score' => battle_score,
@@ -118,7 +118,7 @@ class Playlog
       #    'card_image_name3' => card_image_name3,
       # }
 
-      @record << "#{title},#{date},#{difficulty},#{battle_rank},#{battle_score},#{over_damage},#{technical_rank},#{technical_score},#{result},#{full_bell},#{full_combo},#{max_combo},#{score_critical_break},#{score_break},#{score_hit},#{score_miss},#{score_bell},#{score_damage},#{score_detial_tap},#{score_detial_hold},#{score_detial_flick},#{score_detial_side_tap},#{score_detial_side_hold},#{place_name},#{matching1},#{matching2},#{matching3},#{card_level1},#{card_power1},#{card_image_name1},#{card_level2},#{card_power2},#{card_image_name2},#{card_level3},#{card_power3},#{card_image_name3}"
+      @record << "#{date},#{title},#{difficulty},#{battle_rank},#{battle_score},#{over_damage},#{technical_rank},#{technical_score},#{result},#{full_bell},#{full_combo},#{max_combo},#{score_critical_break},#{score_break},#{score_hit},#{score_miss},#{score_bell},#{score_damage},#{score_detial_tap},#{score_detial_hold},#{score_detial_flick},#{score_detial_side_tap},#{score_detial_side_hold},#{place_name},#{matching1},#{matching2},#{matching3},#{card_level1},#{card_power1},#{card_image_name1},#{card_level2},#{card_power2},#{card_image_name2},#{card_level3},#{card_power3},#{card_image_name3}"
     end
 
     p @record
