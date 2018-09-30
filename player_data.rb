@@ -51,7 +51,7 @@ class PlayerData
       total_technical_scores << driver.find_element(:xpath, '//td[contains(@class, "gray_line f_b")]').text.gsub(/,/, '_').to_i
     end
 
-    @record="#{now},#{name},#{trophy},#{total_track},#{money},#{total_money},#{reincarnation*100+lv},#{battle_point},#{rating},#{max_rating},#{jewels.join(",")},#{total_battle_scores.join(",")},#{total_technical_scores.join(",")}"
+    @record="#{now},#{name},#{trophy},#{total_track},#{money},#{total_money},#{reincarnation*100+lv},#{battle_point},#{rating},#{max_rating},#{total_battle_scores.join(",")},#{total_technical_scores.join(",")},#{jewels.join(",")}"
 
     p @record
   end
