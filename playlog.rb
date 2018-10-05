@@ -16,9 +16,14 @@ class Playlog
   end
 
   def collect_detail(driver, all)
-    num = all ? 50 : 1
+    driver.navigate.to "https://ongeki-net.com/ongeki-mobile/record/playlog/"
+
+    # <input type="hidden" name="idx" value="2">
+    page_numbers = driver.find_elements(:name, 'idx').map{|e| e.property('value').to_i}
+    page_numbers = page_numbers[0, 1] unless all
+
     @record = []
-    num.times do |i|
+    for i in page_numbers.reverse do
       playlog_detail_url="https://ongeki-net.com/ongeki-mobile/record/playlogDetail/?idx=#{i}"
       puts "#{playlog_detail_url}を解析中…"
       driver.navigate.to playlog_detail_url
