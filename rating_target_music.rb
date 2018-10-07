@@ -24,7 +24,7 @@ class RatingTargetMusic
   end
 
   def save(now = Time.now)
-    filename = "rating_target_music_#{now.strftime('%Y%m%d_%H%M%S')}.csv"
+    filename = "rating_target_music_#{now.strftime('%Y%m%d-%H%M%S')}.csv"
 
     File.open(filename, 'w') do |f|
       @record.each do |r|
