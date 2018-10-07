@@ -4,6 +4,7 @@ require './playlog'
 require './player_data'
 require './bp_target_music'
 require './rating_target_music'
+require './music_detail'
 
 option = AppOption.new
 driver = OngekiWebDriver.new.login
@@ -28,3 +29,8 @@ bp_target_music.save(now) unless option.has?(:dryrun)
 rating_target_music = RatingTargetMusic.new
 rating_target_music.collect(driver, now)
 rating_target_music.save(now) unless option.has?(:dryrun)
+
+# 楽曲詳細
+music_detail = MusicDetail.new
+music_detail.collect_detail(driver, !option.has?(:short))
+music_detail.save unless option.has?(:dryrun)
