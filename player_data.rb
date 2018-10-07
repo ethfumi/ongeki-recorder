@@ -1,10 +1,8 @@
 class PlayerData
-  def collect(driver)
+  def collect(driver, now = Time.now)
     # プレイヤーデータ取得
     # プレイヤーデータの表示
     driver.navigate.to 'https://ongeki-net.com/ongeki-mobile/home/playerDataDetail/'
-
-    now = Time.now
 
     trophy = driver.find_element(:xpath, '//div[contains(@class, "trophy_block")]').text
     reincarnation = driver.find_element(:xpath, '//div[contains(@class, "reincarnation_block")]').text.to_i

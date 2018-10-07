@@ -1,8 +1,6 @@
 class RatingTargetMusic
-  def collect(driver)
+  def collect(driver, now = Time.now)
     driver.navigate.to 'https://ongeki-net.com/ongeki-mobile/home/ratingTargetMusic/'
-
-    now = Time.now
 
     # <div class="music_label p_5 break">初音ミクの激唱</div>
     titles = driver.find_elements(:xpath, '//div[contains(@class, "music_label p_5 break")]').map(&:text)
@@ -25,8 +23,8 @@ class RatingTargetMusic
     p @record
   end
 
-  def save
-    filename = "rating_target_music_#{Time.now.strftime('%Y%m%d_%H%M%S')}.csv"
+  def save(now = Time.now)
+    filename = "rating_target_music_#{now.strftime('%Y%m%d_%H%M%S')}.csv"
 
     File.open(filename, 'w') do |f|
       @record.each do |r|
