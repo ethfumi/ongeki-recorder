@@ -87,7 +87,7 @@ class MusicDetail
   end
 
   def save(now = Time.now)
-    filename = "music_detail_#{now.strftime('%Y%m%d_%H%M%S')}.csv"
+    filename = "music_detail_#{now.strftime('%Y%m%d-%H%M%S')}.csv"
 
     File.open(filename, 'w') do |f|
       f.puts "最終プレイ日時,楽曲ID,曲名,難易度,譜面レベル,プレイ回数,バトル評価,オーバーダメージ,バトルスコア,テクニカル評価,テクニカルスコア,フルベル,フルコン,カード1のレベル,カード1のファイル名,カード2のレベル,カード2のファイル名,カード3のレベル,カード3のファイル名"

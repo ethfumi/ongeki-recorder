@@ -51,9 +51,18 @@ bundle install --path=vendor/bundle
 
 `ONGEKI_SEGA_ID`の`your_id`と`ONGEKI_PASSWORD`の`your_password`を書き換える
 
-下記コマンドををongeki-recorder直下で実行。playlog_YYYYmmdd-HHMMSS.csvとplayer_data.csvに保存されます。
+下記コマンドををongeki-recorder直下で実行。
 ```
 bundle exec ruby app.rb
+```
+
+およそ2分後、下記ファイルが生成されます。
+```
+player_data.csv
+playlog_YYYYmmdd-HHMMSS.csv
+bp_target_music_YYYYmmdd-HHMMSS.csv
+rating_target_music_YYYYmmdd-HHMMSS.csv
+music_detail_YYYYmmdd-HHMMSS.csv
 ```
 
 # 実行結果
