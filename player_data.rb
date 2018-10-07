@@ -49,7 +49,24 @@ class PlayerData
       total_technical_scores << driver.find_element(:xpath, '//td[contains(@class, "gray_line f_b")]').text.gsub(/,/, '_').to_i
     end
 
-    @record="#{now},#{name},#{trophy},#{total_track},#{money},#{total_money},#{reincarnation*100+lv},#{battle_point},#{rating},#{max_rating},#{total_battle_scores.join(",")},#{total_technical_scores.join(",")},#{jewels.join(",")}"
+    # 雑にイベント取得 同時にランキングは開催1個まで、という前提条件付き
+    driver.navigate.to 'https://ongeki-net.com/ongeki-mobile/event/'
+    event_ids = driver.find_elements(:name, 'idx').map{|e| e.property('value').to_i}
+    # 一番上は常設東方なので下から探索する
+    for i in event_ids.reverse do
+      event_ranking_url="https://ongeki-net.com/ongeki-mobile/event/ranking/?idx=#{i}"
+      puts "#{event_ranking_url}を解析中…"
+      driver.navigate.to event_ranking_url
+      nums = driver.find_elements(:xpath, '//span[contains(@class, "f_20 f_b")]').map{|e| e.text.scan(/[0-9,]+/).first.gsub(/,/, '_').to_i}
+
+      next if nums.empty?
+
+      event_point = nums[0];
+      event_rank = nums[1];
+      break
+    end
+
+    @record="#{now},#{name},#{trophy},#{total_track},#{money},#{total_money},#{reincarnation*100+lv},#{battle_point},#{rating},#{max_rating},#{event_point},#{event_rank},#{total_battle_scores.join(",")},#{total_technical_scores.join(",")},#{jewels.join(",")}"
 
     p @record
   end
