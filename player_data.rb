@@ -10,7 +10,7 @@ class PlayerData
     battle_point = driver.find_element(:xpath, '//div[contains(@class, "battle_point_")]').text.gsub(/,/, '_').to_i
     name = driver.find_element(:xpath, '//div[contains(@class, "name_block f_15")]').text
 
-    rating = driver.find_element(:xpath, '//span[contains(@class, "rating_shadow f_20 f_b")]').text.to_f
+    rating = driver.find_element(:xpath, '//span[contains(@class, "f_20 f_b")]').text.to_f
     max_rating = driver.find_element(:xpath, '//span[contains(@class, "f_11")]').text.gsub(/（MAX (.+)）/) {|_|$1}.to_f
 
     # TODO "所持マニー 12,103（累計 652,103）\nトータルプレイTRACK数 1355"
