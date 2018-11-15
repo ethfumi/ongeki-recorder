@@ -57,7 +57,7 @@ class PlayerData
       event_ranking_url="https://ongeki-net.com/ongeki-mobile/event/ranking/?idx=#{i}"
       puts "#{event_ranking_url}を解析中…"
       driver.navigate.to event_ranking_url
-      nums = driver.find_elements(:xpath, '//span[contains(@class, "f_20 f_b")]').map{|e| e.text.scan(/[0-9,]+/).first.gsub(/,/, '_').to_i}
+      nums = driver.find_elements(:xpath, '//span[contains(@class, "f_20 f_b")]').map{|e| e.text.scan(/[0-9,]+/).first&.gsub(/,/, '_').to_i}
 
       next if nums.empty?
 
