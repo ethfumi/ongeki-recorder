@@ -15,7 +15,7 @@ class RatingTargetMusic
     # <div class="f_14 l_h_12">12,272,217</div>
     scores = driver.find_elements(:xpath, '//div[contains(@class, "f_14 l_h_12")]').map(&:text).map{ |s| s[/([0-9,.]+)/, 1].gsub(/,/, '_').to_i}
 
-    kinds = Array.new(30, "best") + Array.new(10, "recent")
+    kinds = Array.new(15, "bestnew") + Array.new(30, "best") + Array.new(10, "recent") + Array.new(20, "nextrecent")
 
     @record = titles.zip(difficulties, scores, kinds).map do |t, d, s, k|
       "#{now},#{t},#{d},#{s},#{k}"
