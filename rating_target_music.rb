@@ -24,15 +24,18 @@ class RatingTargetMusic
   end
 
   def save(now = Time.now)
+    directory = 'ongeki-plus-log'
+    FileUtils.mkdir_p(directory) unless FileTest.exist?(directory)
     filename = "rating_target_music_#{now.strftime('%Y%m%d-%H%M%S')}.csv"
+    filepath = "#{directory}/#{filename}"
 
-    File.open(filename, 'w') do |f|
+    File.open(filepath, 'w') do |f|
       @record.each do |r|
         f.puts r
       end
     end
 
-    p "#{filename}に保存しました。"
+    p "#{filepath}に保存しました。"
   end
 end
 

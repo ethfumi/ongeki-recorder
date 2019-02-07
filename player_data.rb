@@ -74,13 +74,16 @@ class PlayerData
   end
 
   def save
-    filename='player_data.csv'
+    directory = 'ongeki-plus-log'
+    FileUtils.mkdir_p(directory) unless FileTest.exist?(directory)
+    filename = 'player_data.csv'
+    filepath = "#{directory}/#{filename}"
 
-    File.open(filename, 'a') do |f|
+    File.open(filepath, 'a') do |f|
         f.puts @record
     end
 
-    p "#{filename}に追加保存しました。"
+    p "#{filepath}に追加保存しました。"
   end
 end
 
