@@ -92,9 +92,12 @@ class MusicDetail
   end
 
   def save(now = Time.now)
+    directory = 'ongeki-plus-log'
+    FileUtils.mkdir_p(directory) unless FileTest.exist?(directory)
     filename = "music_detail_#{now.strftime('%Y%m%d-%H%M%S')}.csv"
+    filepath = "#{directory}/#{filename}"
 
-    File.open(filename, 'w') do |f|
+    File.open(filepath, 'w') do |f|
       f.puts "最終プレイ日時,楽曲ID,曲名,難易度,譜面レベル,プレイ回数,バトル評価,オーバーダメージ,バトルスコア,テクニカル評価,テクニカルスコア,フルベル,フルコン,カード1のレベル,カード1のファイル名,カード2のレベル,カード2のファイル名,カード3のレベル,カード3のファイル名"
       @record.each do |r|
         # f.puts r.to_json
@@ -102,7 +105,7 @@ class MusicDetail
       end
     end
 
-    p "#{filename}に保存しました。"
+    p "#{filepath}に保存しました。"
   end
 end
 
