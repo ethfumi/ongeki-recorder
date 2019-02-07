@@ -1,14 +1,16 @@
+require 'cgi'
+
 class MusicDetail
   def collect_detail(driver, all)
     driver.navigate.to "https://ongeki-net.com/ongeki-mobile/record/musicGenre/search/?genre=99&diff=3"
-    page_numbers = driver.find_elements(:name, 'idx').map{|e| e.property('value').to_i}
+    page_values = driver.find_elements(:name, 'idx').map{|e| CGI.escape(e.property('value'))}
     driver.navigate.to "https://ongeki-net.com/ongeki-mobile/record/musicGenre/search/?genre=99&diff=10"
-    page_numbers += driver.find_elements(:name, 'idx').map{|e| e.property('value').to_i}
-    page_numbers = page_numbers[0, 1] unless all
+    page_values += driver.find_elements(:name, 'idx').map{|e| CGI.escape(e.property('value'))}
+    page_values = page_values[0, 1] unless all
 
     @record = []
-    for music_id in page_numbers do
-      music_detail_url="https://ongeki-net.com/ongeki-mobile/record/musicDetail/?idx=#{music_id}"
+    for page_value in page_values do
+      music_detail_url="https://ongeki-net.com/ongeki-mobile/record/musicDetail/?idx=#{page_value}"
       puts "#{music_detail_url}を解析中…"
       driver.navigate.to music_detail_url
 
@@ -77,6 +79,9 @@ class MusicDetail
       card_image_name1 = card_image_names.map{|a| a[0]}
       card_image_name2 = card_image_names.map{|a| a[1]}
       card_image_name3 = card_image_names.map{|a| a[2]}
+
+      #TODO:オンゲキまでは分かっているので、判明したら入力したい…！
+      music_id = ""
 
       difficulty.length.times do |n|
         @record << "#{last_play_datetime[n]},#{music_id},#{title},#{difficulty[n]},#{score_level[n]},#{play_count[n]},#{battle_rank[n]},#{over_damage_high_score[n]},#{battle_high_score[n]},#{technical_rank[n]},#{technical_high_score[n]},#{full_bell[n]},#{full_combo[n]},#{card_level1[n]},#{card_image_name1[n]},#{card_level2[n]},#{card_image_name2[n]},#{card_level3[n]},#{card_image_name3[n]}"
