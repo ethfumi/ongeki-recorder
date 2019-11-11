@@ -17,12 +17,14 @@ class PlayerData
     money, total_money, total_track = driver.find_element(:xpath, '//table[contains(@class, "t_l f_13")]').text.scan(/[0-9,]+/).map{|s| s.gsub(/,/, '_').to_i}
 
     # ジュエル
-    driver.navigate.to 'https://ongeki-net.com/ongeki-mobile/record/chapterList/?story=1'
-    jewels = driver.find_elements(:xpath, '//span[contains(@class, "v_b p_3 f_11 white")]').map(&:text).map{ |s| s.gsub(/,/, '_').to_i}
-    driver.navigate.to 'https://ongeki-net.com/ongeki-mobile/record/chapterList/?story=2'
-    jewels << driver.find_elements(:xpath, '//span[contains(@class, "v_b p_3 f_11 white")]').map(&:text).map{ |s| s.gsub(/,/, '_').to_i}
-    jewel_wild = driver.find_element(:xpath, '//span[contains(@class, "v_m p_3 f_14 gray")]').text.gsub(/,/, '_').to_i
-    jewels << jewel_wild
+    driver.navigate.to 'https://ongeki-net.com/ongeki-mobile/record/storyDetail/?story=1'
+    # オールマイティ,1章
+    jewels = driver.find_elements(:xpath, '//span[contains(@class, "v_m f_13 gray")]').map(&:text).map{ |s| s.gsub(/,/, '_').to_i}
+    driver.navigate.to 'https://ongeki-net.com/ongeki-mobile/record/storyDetail/?story=2'
+    jewels << driver.find_elements(:xpath, '//span[contains(@class, "v_m f_13 gray")]').map(&:text).map{ |s| s.gsub(/,/, '_').to_i}[1]
+    driver.navigate.to 'https://ongeki-net.com/ongeki-mobile/record/storyDetail/?story=3'
+    jewels << driver.find_elements(:xpath, '//span[contains(@class, "v_m f_13 gray")]').map(&:text).map{ |s| s.gsub(/,/, '_').to_i}[1]
+    driver.navigate.to 'https://ongeki-net.com/ongeki-mobile/record/'
 
     # # todo:親密度とりあえず柚子だけ
     # # 必要なくなったので閉じる
