@@ -74,7 +74,7 @@ class PlayerData
   end
 
   def save
-    directory = 'ongeki-plus-log'
+    directory = 'ongeki-summer-log'
     FileUtils.mkdir_p(directory) unless FileTest.exist?(directory)
     filename = 'player_data.csv'
     filepath = "#{directory}/#{filename}"

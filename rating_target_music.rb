@@ -24,7 +24,7 @@ class RatingTargetMusic
   end
 
   def save(now = Time.now)
-    directory = 'ongeki-plus-log'
+    directory = 'ongeki-summer-log'
     FileUtils.mkdir_p(directory) unless FileTest.exist?(directory)
     filename = "rating_target_music_#{now.strftime('%Y%m%d-%H%M%S')}.csv"
     filepath = "#{directory}/#{filename}"
