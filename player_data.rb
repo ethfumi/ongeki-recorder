@@ -30,7 +30,7 @@ class PlayerData
     # # 必要なくなったので閉じる
     driver.navigate.to 'https://ongeki-net.com/ongeki-mobile/character/characterDetail/?idx=1001'
 
-    friendly_image_numbers = driver.find_element(:xpath, '//div[contains(@class, "character_friendly_conainer f_l")]')
+    friendly_image_numbers = driver.find_element(:xpath, '//div[contains(@class, "character_friendly_container f_l")]')
                      .find_elements(:tag_name, 'img')
                      .map{|e| e.property('src').scan(/[0-9]+/)}
 
